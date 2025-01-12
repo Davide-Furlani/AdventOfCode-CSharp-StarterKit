@@ -7,7 +7,7 @@ static class DayInitialization
         var projectDir = AppContext.BaseDirectory.Substring(0, AppContext.BaseDirectory.IndexOf("bin"));
 
         var dayStr = day.ToString("00");
-        var dayDir = $@"{projectDir}\Day{dayStr}\";
+        var dayDir = $@"{projectDir}/Day{dayStr}/";
 
         if (Directory.Exists(dayDir))
         {
@@ -17,7 +17,7 @@ static class DayInitialization
 
         Directory.CreateDirectory(dayDir);
 
-        var template = File.ReadAllText($@"{projectDir}Base\solver.txt");
+        var template = File.ReadAllText($@"{projectDir}Base/Solver.txt");
         template = template.Replace("[Day]", dayStr);
         File.WriteAllText($"{dayDir}Day{dayStr}Solver.cs", template);
 
